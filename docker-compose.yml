@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "8002:27017"
+    container_name: mongodb
+    volumes:
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+
+
+  mongo-node-api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "3081:3000"
+    container_name: mongo-node-api
+    links:
+      - mongodb
+  
