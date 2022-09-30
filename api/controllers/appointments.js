@@ -110,7 +110,7 @@ exports.appointments_get_all = (req, res, next) => {
         .forEach(appoint => {
             appoint.patientInfo.request = {
                 type: "GET",
-                url: "http://localhost:3000/patients/" + appoint.patientInfo.patientId.toString()
+                url: "http://localhost:3000/patients/" + appoint.patientInfo.snsNumber.toString()
             };
             appointments.push(appoint);
         })
